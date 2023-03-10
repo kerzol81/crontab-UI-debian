@@ -1,3 +1,7 @@
+
+#sudo docker build . -t download_interface:debian
+#
+
 FROM debian:bullseye-slim
 
 RUN apt-get update -y && apt-get upgrade -y
@@ -15,5 +19,7 @@ RUN mkdir /mnt/dest
 RUN mkdir /usr/local/bin/log
 
 ENV TZ="Europe/Budapest"
+ENV HOST="127.0.0.1"
+ENV PORT=8080
 
-RUN crontab-ui HOST=127.0.0.1 PORT=8080 &
+RUN crontab-ui &
